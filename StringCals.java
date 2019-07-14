@@ -42,11 +42,27 @@ public class StringCals {
         temp = temp.replace(')', 'c');
         for(int i = temp.length() - 1; i > -1; i--){
             if(temp.charAt(i) == 'c'){
+                for(int k=i+1; k < temp.length(); k++){
+                    if(temp.charAt(k) == 'c' || temp.charAt(k) == 'm' || temp.charAt(k) == 'd' ||
+                            temp.charAt(k) == 'a' || temp.charAt(k) == 's') break;
+                    else if(temp.charAt(i) != ' '){
+                        Er = true;
+                        return "Error";
+                    }
+                }
                 if(!checkr)
                     iend = i;
                 checkr = true;
             } else if(temp.charAt(i) == 'o'){
                 ibegin = i;
+                for(int k=i-1; k > 0; k--){
+                    if( temp.charAt(k) == 'o' || temp.charAt(k) == 'm' || temp.charAt(k) == 'd' ||
+                            temp.charAt(k) == 'a' || temp.charAt(k) == 's') break;
+                    else if(temp.charAt(i) != ' '){
+                        Er = true;
+                        return "Error";
+                    }
+                }
             }
         }
         if(checkr){
